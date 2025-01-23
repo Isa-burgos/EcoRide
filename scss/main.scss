@@ -1,59 +1,97 @@
 @import 'custom';
 @import 'reset';
+@import 'footer';
+@import 'header';
+@import 'body';
+@import '../scss/components/button';
 
-.header-nav{
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0px;
-}
-
-.nav-item{
-    padding: 0 1.5rem;
-}
-
-.nav-link{
-    color: $primary;
-}
-
-.bi-list{
-    color: $primary;
-    width: 2rem;
-    height: 2rem;
-}
-
-.navbar-brand{
-    margin: auto;
-}
-
-@media screen and (min-width: 992px){
-    .header-nav{
-        flex-direction: row;
+.big-hero{
+    max-width: 100%;
+    position: relative;
+    &::before{
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(/assets/img/hero.webp);
+        background-size: cover;
+        filter: brightness(0.4);
+    }
+    *{
+        position: relative;
+    }
+    .big-hero-content{
+        width: 90%;
+        height: 75%;
+        margin: auto;
+        padding: 5rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        justify-content: space-between;
-        margin: 0px;
+        flex-wrap: nowrap;
+        .champ{
+            width: 100%;
+        }
+        @media screen and (min-width: 992px){
+            .champ{
+                width: 25%;
+                }
+        }
+            input{
+                border-radius: 3px;
+                border: 0.5px solid $black;
+                min-width: 100%;
+                color: $primary;
+                padding: 0.3rem 0 0.3rem 2.5rem;
+                font-size: 1rem;
+                margin: 0.5rem 0;
+            }
+            .startAdress{
+                background: 10px 5px no-repeat $light;
+                background-image: url(/assets/img/startAdress.svg);
+            }
+            .endAdress{
+                background: 10px 5px no-repeat $light;
+                background-image: url(/assets/img/endAdress.svg);
+            }
+            .date-depart{
+                background: 10px 5px no-repeat $light;
+                background-image: url(/assets/img/calendar.svg);
+            }
+            .passenger{
+                background: 10px 5px no-repeat $light;
+                background-image: url(/assets/img/passager.svg);
+            }
     }
 }
 
-html{
-    position: relative;
-    min-height: 100%;
+.trip{
+    max-width: 100%;
+    background-color: $dark;
+    padding: 5rem 0;
 }
 
-main{
-    margin-bottom: 150px;
-}
+.about{
+    max-width: 100%;
+    background-color: $secondary;
+    padding: 5rem 2rem;
+    .valeurs{
+        width: 80%;
+        background-color: $dark;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        .valeurs-content img{
+            // max-width: ;
 
-.footer{
-    padding: 2rem;
-    position: absolute;
-    width: 100%;
-    height: 134px;
-    bottom: 0;
-
-    @media screen and (max-width: 992px){
-        .contact{
-            text-align: start;
         }
     }
+
 }
+
+
+
+

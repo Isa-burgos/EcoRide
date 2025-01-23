@@ -1,0 +1,33 @@
+.header-nav{
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px;
+}
+
+.nav-item{
+    padding: 0 1.5rem;
+}
+
+.nav-link{
+    color: $primary;
+}
+
+.bi-list{
+    color: $primary;
+    width: 2rem;
+    height: 2rem;
+}
+
+.navbar-brand{
+    margin: auto;
+}
+
+@media screen and (min-width: 992px){
+    .header-nav{
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0px;
+    }
+}
