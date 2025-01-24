@@ -1,0 +1,49 @@
+.dashboard{
+    background-color: $secondary;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0 2rem 0;
+    .dashboard-content{
+        width: 90%;
+        margin: auto;
+        .dashboard__options{
+            width: 100%;
+            border-radius: 3px;
+            border: 0.5px solid $black;
+            padding: 0.3rem 1rem;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            background-color: $light;
+            color: $primary;
+            .dashboard__options-content{
+                text-align: center;
+                text-decoration: none;
+                .dashboard__options-picto{
+                    display: block;
+                    width: 55px;
+                    height: 55px;
+                    margin: auto;
+                }
+                .picto-profile{
+                    background: url(/assets/img/picto-profile.svg) no-repeat 0 0;
+                }
+                .picto-review{
+                    background: url(/assets/img/picto-avis.svg) no-repeat 0 0;
+                }
+                .picto-historique{
+                    background: url(/assets/img/picto-historique.svg) no-repeat 0 0;
+                }
+                .dashboard__options-title{
+                    color: $black;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 992px){
+    .dashboard{
+        width: 30%;
+        margin: 2rem auto;
+    }
+}
