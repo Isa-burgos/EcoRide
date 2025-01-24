@@ -3,128 +3,15 @@
 @import 'footer';
 @import 'header';
 @import 'body';
+@import '../scss/pages/home';
 @import '../scss/pages/login';
+@import '../scss/pages/register';
 @import '../scss/components/button';
+@import '../scss/components/hero';
 
-.big-hero{
-    max-width: 100%;
-    position: relative;
-    &::before{
-        position: absolute;
-        content: "";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url(/assets/img/hero.webp);
-        background-size: cover;
-        filter: brightness(0.4);
-    }
-    *{
-        position: relative;
-    }
-    .big-hero-content{
-        width: 90%;
-        height: 75%;
-        margin: auto;
-        padding: 8rem 0 3rem 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: nowrap;
-        .champ{
-            width: 100%;
-        }
-        @media screen and (min-width: 992px){
-            .champ{
-                width: 25%;
-                }
-        }
-            input{
-                border-radius: 3px;
-                border: 0.5px solid $black;
-                min-width: 100%;
-                color: $primary;
-                padding: 0.3rem 0 0.3rem 2.5rem;
-                font-size: 1rem;
-                margin: 0.5rem 0;
-            }
-            .startAdress{
-                background: 10px 5px no-repeat $light;
-                background-image: url(/assets/img/startAdress.svg);
-            }
-            .endAdress{
-                background: 10px 5px no-repeat $light;
-                background-image: url(/assets/img/endAdress.svg);
-            }
-            .date-depart{
-                background: 10px 5px no-repeat $light;
-                background-image: url(/assets/img/calendar.svg);
-            }
-            .passenger{
-                background: 10px 5px no-repeat $light;
-                background-image: url(/assets/img/passager.svg);
-            }
-    }
-}
 
-.trip{
-    max-width: 100%;
-    background-color: $dark;
-    padding: 5rem 0;
-}
 
-.about{
-    max-width: 100%;
-    background-color: $secondary;
-    padding: 5rem 2rem;
-    .about-paragraph{
-        width: 80%;
-    }
-    p{
-        text-align: justify;
 
-        padding: 1rem 0;
-        margin: 1rem 0;
-        
-    }
-    .valeurs{
-        width: 80%;
-        background-color: $dark;
-        margin: auto;
-        height: auto;
-        filter: drop-shadow(0 0 1rem $black);
-
-        .card-content{
-            width: 100%;
-            min-height: 15rem;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-            @media screen and (min-width: 992px){
-                .card-content{
-                    width: 25%;
-                    min-height: 18.75rem;
-                }
-            }
-            .card-title{
-                height: 5rem;
-                display: flex;
-                align-items: center;
-            }
-            img{
-                width: 10rem;
-                height: 10rem;
-                object-fit: cover;
-            }
-            .card-text{
-                text-align: justify;
-            }
-        }
-    }
 
 
 
