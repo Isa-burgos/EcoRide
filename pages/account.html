@@ -1,0 +1,137 @@
+<section class="big-hero text-center">
+    <div class="big-hero-content">
+        <h1>Mon compte</h1>
+    </div>
+</section>
+
+<section class="formulaire">
+    <div class="formulaire-title m-auto">
+        <h2>Informations générales</h2>
+    </div>
+
+    <form class="form" action="">
+        <div class="d-flex pt-2">
+            <div class="me-2">
+                <input type="radio" id="homme" name="genre">
+                <label for="homme">Homme</label>
+            </div>
+            <div>
+                <input type="radio" id="femme" name="genre">
+                <label for="femme">Femme</label>
+            </div>
+        </div>
+
+        <div>
+            <label for=""></label>
+            <input class="text" type="text" placeholder="Nom">
+        </div>
+        <div>
+            <label for=""></label>
+            <input class="text" type="text" placeholder="Prénom">
+        </div>
+        <div>
+            <label for="bday-year">Année de naissance</label>
+            <input class="text" type="text" name="bday-year" id="bday-year" autocomplete="bday-year" placeholder="année de naissance">
+        </div>
+        <div>
+            <label for=""></label>
+            <input class="text" type="email" placeholder="Email">
+        </div>
+        <div>
+            <input class="checkbox" type="checkbox" id="isPassenger">
+            <label for="isPassenger">Je suis passager</label>
+        </div>
+        <div>
+            <input class="checkbox checkbox-driver" type="checkbox" id="isDriver">
+            <label for="isDriver">Je suis conducteur</label>
+
+            <div class="hidden-content">
+                <div class="formulaire-title mx-auto mt-2">
+                    <h2>Mon véhicule</h2>
+                </div>
+    
+                <div>
+                    <label for="immat">Plaque d'immatriculation</label>
+                    <input class="text" type="text" name="immat" id="immat" autocomplete="immat" placeholder="XX-111-XX">
+                </div>
+                <div>
+                    <label for="immat-date">Date de la première immatriculation</label>
+                    <input class="text" type="date" name="immat-date" id="immat-date" autocomplete="immat-date" placeholder="01/01/2020">
+                </div>
+                <div>
+                    <label for="marque">Marque</label>
+                    <input class="text" type="text" name="marque" id="marque" autocomplete="marque">
+                </div>
+                <div>
+                    <label for="modele">Modèle</label>
+                    <input class="text" type="text" name="modele" id="modele" autocomplete="modele">
+                </div>
+                <div>
+                    <label for="color">Date de la première immatriculation</label>
+                    <input class="text" type="text" name="color" id="color" autocomplete="color">
+                </div>
+                <div class="formulaire-title mb-3">
+                    <a href="#">Ajouter un véhicule</a>
+                </div>
+                <div>
+                    <label for="place">Places disponibles</label>
+                    <input class="text" type="text" name="place" id="place">
+                </div>
+    
+                <div class="formulaire-title">
+                    <div class="formulaire-title">
+                        <h2>Préférences</h2>
+                    </div>
+                    <fieldset>
+                        <legend>Fumeur</legend>
+                        <div class="d-flex">
+                            <div class="me-3 mb-2">
+                                <input type="radio">
+                                <label for="">Oui</label>
+                            </div>
+                            <div>
+                                <input type="radio">
+                                <label for="">Non</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    </div>     
+                    <fieldset>
+                        <legend>Animal</legend>
+                        <div class="d-flex">
+                            <div class="me-3 mb-2">
+                                <input type="radio">
+                                <label for="">Oui</label>
+                            </div>
+                            <div>
+                                <input type="radio">
+                                <label for="">Non</label>
+                            </div>
+                        </div>
+                        <div class="formulaire-title">
+                            <a href="#">Ajouter une préférence</a>
+                        </div> 
+            </div>
+        </div>
+    </form>
+</section>
+
+<button class="btn d-flex justify-content-center" type="submit">Valider</button>
+<section class="formulaire">
+    <div class="formulaire-title mx-auto mb-3">
+        <h2>Mot de passe</h2>
+    </div>
+    <div class="formulaire-title m-auto">
+        <a href="#">Modifier mon mot de passe</a>
+    </div>
+</section>
+<section class="formulaire">
+    <div class="formulaire-title mx-auto mb-3">
+        <h2>Supprimer mon compte</h2>
+    </div>
+    <div class="formulaire-title m-auto">
+        <p>La suppression de compte est définitive. Vos données personnelles ainsi que vos annonces seront supprimées.</p>
+    </div>
+    <button class="btn btn-danger d-flex justify-content-center" type="submit">Supprimer mon compte</button>
+</section>
+<div style="height: 1rem;"></div>

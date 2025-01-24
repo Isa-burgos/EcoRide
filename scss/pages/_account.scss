@@ -1,0 +1,15 @@
+.formulaire-title{
+    width: 90%;
+}
+
+.form {
+    .hidden-content {
+      display: none;
+    }
+  
+    .checkbox-driver {
+      &:checked ~ .hidden-content {
+        display: block;
+      }
+    }
+  }
