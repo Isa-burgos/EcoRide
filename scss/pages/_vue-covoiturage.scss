@@ -1,0 +1,93 @@
+.note{
+    display: flex;
+}
+
+.trip-services {
+    min-width: 9rem;
+    height: 6rem;
+    background-color: $dark;
+    border-radius: 3px;
+    color: $white;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .passenger-quantity{
+        width: 100%;
+        border-radius: 3px;
+        padding: 0.3rem 1rem;
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        padding: 1rem;
+        background-color: $light;
+        color: $black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .passenger-icon{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+        .passenger-quantity-and-price{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            flex: 1;
+            justify-content: flex-end;
+        }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            .btn-quantity {
+                width: 30px;
+                height: 30px;
+                background-color: $secondary;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-size: 18px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:hover {
+                    background-color: $dark;
+                }
+            }
+            .quantity-input {
+                width: 50px;
+                text-align: center;
+                font-size: 18px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px){
+    .covoiturages-dashboard{
+        width: 80%;
+        margin: 2rem auto;
+        .reservation{
+            flex-direction: row;
+            justify-content: space-between;
+            .passenger-quantity{
+                width: 50%;
+            }
+        }
+    }
+}

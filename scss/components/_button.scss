@@ -10,6 +10,19 @@
         border: 1px solid $primary;
     }
 }
+.btn-little{
+    background-color: $primary;
+    color: $white;
+    border: 1px solid $primary;
+    border-radius: 3px;
+    padding: 0.2rem 0.5rem;
+    margin: 1rem;
+    &:hover{
+        background-color: transparent;
+        border: 1px solid $primary;
+        color: $black;
+    }
+}
 
 .btn-danger{
     background-color: $white;
