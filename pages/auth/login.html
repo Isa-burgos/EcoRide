@@ -9,11 +9,14 @@
     <form class="form" action="">
         <div>
             <label for="email"></label>
-            <input class="text" type="email" name="email" placeholder="Email" value="email@email.com">
+            <input class="text form-control" type="email" name="email" id="emailInput" placeholder="Email" value="email@email.com">
+            <div class="invalid-feedback">
+                L'e-mail et le mot de passe ne correspondent pas
+            </div>
         </div>
         <div>
             <label for="password"></label>
-            <input class="text password" type="password" name="password" placeholder="Mot de passe" value="password">
+            <input class="text password form-control" type="password" name="password" id="passwordInput" placeholder="Mot de passe" value="password">
         </div>
         <div>
             <input class="checkbox" type="checkbox">
@@ -23,7 +26,7 @@
             <a href="#">J’ai oublié mon mot de passe</a>
         </div>
 
-            <button class="btn d-flex justify-content-center" type="submit">Valider</button>
+            <button class="btn d-flex justify-content-center" id="btnLogin" type="button">Valider</button>
 
     </form>
 </section>

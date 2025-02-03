@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/main.min.css">
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/script.js/" defer></script>
     <script type="module" src="/Router/router.js" defer></script>
     <title>EcoRide</title>
 </head>
@@ -30,14 +31,17 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" data-show="disconnected">
                     <a class="nav-link" href="/login">Se connecter</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" data-show="disconnected">
                     <a class="nav-link" href="/register">Créer un compte</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" data-show="connected">
                     <a class="nav-link" href="/dashboard">Mon compte</a>
+                  </li>
+                  <li class="nav-item" data-show="connected">
+                    <button class="nav-link" type="button" id="signout-btn">Déconnexion</button>
                   </li>
                 </ul>
               </div>
