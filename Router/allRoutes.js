@@ -7,11 +7,12 @@ export const allRoutes = [
     new Route("/register", "Créer un compte", "/pages/auth/register.html", ["disconnected"], "/js/auth/register.js"),
     new Route("/contact", "Contact", "/pages/contact.html", [], "/js/contact.js"), 
     new Route("/dashboard", "Mon compte", "/pages/auth/dashboard.html", ["user", "admin", "employe"]),
-    new Route("/account", "Mon compte", "/pages/auth/account.html", ["user", "admin", "employe"]),
+    new Route("/account", "Mon compte", "/pages/auth/account.html", ["user", "admin", "employe"], "/js/auth/account.js"),
     new Route("/covoiturages", "Covoiturages", "/pages/covoiturages.html", []),
     new Route("/results", "Covoiturages", "/pages/results-covoiturages.html", []),
     new Route("/trip", "Trajet", "/pages/vue-covoiturage.html", []),
+    new Route("/add-trip", "Ajouter un trajet", "/pages/add-trip.html", []),
 ];
 
 //Le titre s'affiche comme ceci : Route.titre - websitename
-export const websiteName = "Quai Antique";
+export const websiteName = "EcoRide";

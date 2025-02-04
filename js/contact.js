@@ -3,7 +3,13 @@ const subjectContactInput =document.getElementById("subjectContactInput");
 const messageContactInput = document.getElementById("messageContactInput");
 const btnSend = document.getElementById("btn-send");
 
-document.addEventListener("DOMContentLoaded", validateForm);
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+        validateForm();
+    });
+} else {
+    validateForm();
+}
 
 if(emailContactInput) emailContactInput.addEventListener("keyup", validateForm);
 if(subjectContactInput) subjectContactInput.addEventListener("keyup", validateForm);

@@ -5,6 +5,14 @@ const inputPassword = document.getElementById("passwordInput");
 const inputValidationPassword = document.getElementById("passwordValidateInput");
 const btnValidation = document.getElementById("btn-validation-inscription")
 
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+        validateForm();
+    });
+} else {
+    validateForm();
+}
+
 if(inputNom) inputNom.addEventListener("keyup", validateForm);
 if(inputNom) inputPrenom.addEventListener("keyup", validateForm);
 if(inputEmail) inputEmail.addEventListener("keyup", validateForm);
