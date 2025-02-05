@@ -7,12 +7,15 @@
 <section class="conteneur">
     <form class="conteneur-content" action="">
         <h2>Mon trajet</h2>
-        <div id="step1">
+        <div id="step1" class="step active">
             <fieldset>
                 <legend>Adresse de départ</legend>
                 <div>
                     <label for="departAdress"></label>
-                    <input class="input" type="text" name="departAdress" id="departAdress" placeholder="Adresse de départ">
+                    <input class="input form-control" type="text" name="departAdress" id="departAdress" placeholder="Adresse de départ" required>
+                    <div class="invalid-feedback">
+                        Ce champs est requis
+                    </div>
                 </div>
                 <div>
                     <span>Adresse sélectionnée :</span>
@@ -23,7 +26,10 @@
                 <legend>Adresse d'arrivée</legend>
                 <div>
                     <label for="arrivalAdress"></label>
-                    <input class="input" type="text" name="arrivalAdress" id="arrivalAdress" placeholder="Adresse d'arrivée">
+                    <input class="input form-control" type="text" name="arrivalAdress" id="arrivalAdress" placeholder="Adresse d'arrivée" required>
+                    <div class="invalid-feedback">
+                        Ce champs est requis
+                    </div>
                 </div>
                 <div>
                     <span>Adresse sélectionnée :</span>
@@ -31,7 +37,7 @@
                 </div>
             </fieldset>
         </div>
-        <div id="step2">
+        <div id="step2" class="step">
             <h2>Mon véhicule</h2>
             <fieldset>
                 <legend></legend>
@@ -96,7 +102,7 @@
                       </div>
             </fieldset>
         </div>
-        <div id="step3">
+        <div id="step3" class="step">
             <h2>Date et heure</h2>
             <fieldset>
                 <legend>Départ</legend>
@@ -104,7 +110,7 @@
                     <div>
                         <div>
                             <label for="">Jour</label>
-                            <input class="input" type="date">
+                            <input class="input form-control" type="date" required>
                         </div>
                         <div>
                             <fieldset>
@@ -137,7 +143,7 @@
                     <div>
                         <label for="">Je partirai</label>
                         <select class="input" name="" id="">
-                            <option value="0" selected></option>
+                            <option value="0" selected>A l'heure indiquée</option>
                             <option value="15">+/- 15 minutes</option>
                             <option value="30">+/- 30 minutes</option>
                         </select>
@@ -145,7 +151,7 @@
                 </div>
             </fieldset>
         </div>
-        <div id="step4">
+        <div id="step4" class="step">
             <h2>Itinéraire et coût</h2>
             <fieldset>
                 <legend>Itinéraire</legend>
@@ -179,7 +185,7 @@
                 </div>
             </fieldset>
         </div>
-        <div id="step5">
+        <div id="step5" class="step">
             <h2>Publication</h2>
             <fieldset>
                 <legend>Mon trajet</legend>
@@ -226,9 +232,9 @@
             <p>En publiant une annonce en tant que conducteur, vous attestez être en possession d'un permis de conduire en cours de validité et d'un véhicule correctement assuré dont le contrôle technique est à jour.</p>
         </div>
         <div>
-            <button class="btn">Etape précédente</button>
-            <button class="btn">Etape suivante</button>
-            <button type="submit" class="btn">Créer mon annonce</button>
+            <button type="button" class="btn btn-prev" style="display: none;">Etape précédente</button>
+            <button type="button" class="btn btn-next">Etape suivante</button>
+            <button type="submit" class="btn btn-submit" style="display: none;">Créer mon annonce</button>
         </div>
     </form>
 
