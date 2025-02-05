@@ -4,8 +4,8 @@
         <p>Vous avez déjà un compte? <a href="/login">Identifiez-vous</a></p>
 </section>
 
-<section class="page">
-    <form class="form" action="">
+<section class="conteneur">
+    <form class="conteneur-content" action="">
         <div class="d-flex pt-2">
             <div class="me-2">
                 <input type="radio">
@@ -18,21 +18,21 @@
         </div>
         <div>
             <label for="nameInput"></label>
-            <input class="text form-control" id="nameInput" type="text" placeholder="Nom" required>
+            <input class="input form-control" id="nameInput" type="text" placeholder="Nom" required>
             <div class="invalid-feedback">
                 Le nom est requis
             </div>
         </div>
         <div>
             <label for="firstnameInput"></label>
-            <input class="text form-control" type="text" id="firstnameInput" placeholder="Prénom" required>
+            <input class="input form-control" type="text" id="firstnameInput" placeholder="Prénom" required>
             <div class="invalid-feedback">
                 Le prénom est requis
             </div>
         </div>
         <div>
             <label for="annees">Année de naissance</label>
-            <select class="form-select form-control" aria-label="select annee de naissance" name="annees">
+            <select class="form-select form-control input" aria-label="select annee de naissance" name="annees">
                 <option value="1945">1945</option>
                 <option value="1946">1946</option>
                 <option value="1947">1947</option>
@@ -101,21 +101,21 @@
         </div>
         <div>
             <label for="emailInput"></label>
-            <input class="text form-control" type="email" name="email" id="emailInput" placeholder="Email" value="">
+            <input class="input form-control" type="email" name="email" id="emailInput" placeholder="Email" value="">
             <div class="invalid-feedback">
                 L'e-mail n'est pas au bon format
             </div>
         </div>
         <div>
             <label for="passwordInput"></label>
-            <input class="text form-control password" type="password" id="passwordInput" placeholder="Mot de passe" value="">
+            <input class="input form-control password" type="password" id="passwordInput" placeholder="Mot de passe" value="">
             <div class="invalid-feedback">
                 Le mot de passe doit comporter au moins 8 caractères dont 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial
             </div>
         </div>
         <div>
             <label for="passwordValidateInput"></label>
-            <input class="text form-control password" type="password" id="passwordValidateInput" placeholder="Confirmer le mot de passe" value="">
+            <input class="input form-control password" type="password" id="passwordValidateInput" placeholder="Confirmer le mot de passe" value="">
             <div class="invalid-feedback">
                 La confirmation n'est pas identique au mot de passe
             </div>

@@ -1,18 +1,21 @@
-@import 'custom';
-@import 'reset';
-@import 'footer';
-@import 'header';
-@import 'body';
+@import '../scss/abstracts/custom';
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import '../scss/abstracts/mixins';
+@import '../scss/base/reset';
+@import '../scss/base/body';
+@import '../scss/layout/footer';
+@import '../scss/layout/header';
+@import '../scss/layout/layout';
+@import '../scss/components/button';
+@import '../scss/components/form';
+@import '../scss/components/hero';
 @import '../scss/pages/home';
 @import '../scss/pages/login';
-@import '../scss/pages/register';
 @import '../scss/pages/account';
 @import '../scss/pages/dashboard';
 @import '../scss/pages/covoiturages';
 @import '../scss/pages/results-covoiturages';
 @import '../scss/pages/vue-covoiturage';
-@import '../scss/components/button';
-@import '../scss/components/hero';
 
 
 

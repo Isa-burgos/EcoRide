@@ -5,8 +5,8 @@
 .trip-services {
     min-width: 9rem;
     height: 6rem;
+    @include border;
     background-color: $dark;
-    border-radius: 3px;
     color: $white;
     padding: 0.5rem;
     display: flex;
@@ -26,7 +26,6 @@
         padding: 0.3rem 1rem;
         font-size: 1rem;
         margin: 0.5rem 0;
-        padding: 1rem;
         background-color: $light;
         color: $black;
         display: flex;
@@ -78,7 +77,7 @@
     }
 }
 
-@media screen and (min-width: 992px){
+@media screen and (min-width: 768px){
     .covoiturages-dashboard{
         width: 80%;
         margin: 2rem auto;

@@ -46,12 +46,11 @@
             fill: $primary;
         }
         .trip-card{
-            width: 100%;
-            border-radius: 3px;
+            @include border;
             padding: 0.3rem 1rem;
             font-size: 1rem;
             margin: 0.5rem 0;
-            padding: 1rem;
+
             background-color: $light;
             color: $black;
             display: flex;
@@ -171,7 +170,7 @@
     }
 }
 
-@media screen and (min-width: 992px){
+@media screen and (min-width: 768px){
     .search-trip-direction{
         display: flex;
         flex-direction: row;
