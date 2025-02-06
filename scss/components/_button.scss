@@ -6,8 +6,11 @@
     padding: 1rem 2rem;
     margin: 2rem auto 2rem auto;
     &:hover{
-        background-color: transparent;
-        border: 1px solid $primary;
+        background-color: darken($primary, 10%);
+        border: 1px solid darken($primary, 20%);
+    }
+    &:active {
+        transform: scale(0.95);
     }
 }
 .btn-little{

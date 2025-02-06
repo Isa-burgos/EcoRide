@@ -25,33 +25,15 @@
         justify-content: center;
         align-items: center;
         flex-wrap: nowrap;
-        .champ{
-            width: 100%;
-        }
+
         @media screen and (min-width: 992px){
             .champ{
                 width: 25%;
                 }
         }
-            input{
-                min-width: 100%;
-                margin: 0.5rem 0;
-            }
-            .startAdress{
-                background: 10px 5px no-repeat $light;
-                background-image: url(/assets/img/startAdress.svg);
-            }
-            .endAdress{
-                background: 10px 5px no-repeat $light;
-                background-image: url(/assets/img/endAdress.svg);
-            }
-            .date-depart{
-                background: 10px 5px no-repeat $light;
-                background-image: url(/assets/img/calendar.svg);
-            }
-            .passenger{
-                background: 10px 5px no-repeat $light;
-                background-image: url(/assets/img/passager.svg);
-            }
+        input{
+            min-width: 100%;
+            margin: 0.5rem 0;
+        }
     }
 }

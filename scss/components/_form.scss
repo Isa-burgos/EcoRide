@@ -2,3 +2,46 @@
     @include input-style;
     color: $secondary;
 }
+
+.startAdress{
+    background: 10px 5px no-repeat;
+    background-image: url(/assets/img/startAdress.svg);
+}
+.endAdress{
+    background: 10px 5px no-repeat;
+    background-image: url(/assets/img/endAdress.svg);
+}
+.date-depart{
+    background: 10px 5px no-repeat;
+    background-image: url(/assets/img/calendar.svg);
+}
+.passenger{
+    background: 10px 5px no-repeat;
+    background-image: url(/assets/img/passager.svg);
+}
+
+.input-container {
+    position: relative;
+
+    input {
+        padding-right: 40px; // Laisser de la place pour l'icône
+    }
+}
+
+.btn-geoloc {
+    position: absolute;
+    right: 1rem;
+    top: 2.6rem;
+    transform: translateY(-50%); // Centre verticalement
+    width: 30px;
+    height: 30px;
+    background: url('/assets/img/geoloc.svg') no-repeat center;
+    border: none;
+    cursor: pointer;
+    text-indent: -9999px; // Cache le texte pour l'accessibilité
+    outline: none;
+
+    &:hover {
+        filter: brightness(1.2); // Effet au survol
+    }
+}
