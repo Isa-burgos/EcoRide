@@ -232,3 +232,24 @@ document.addEventListener("click", (e) =>{
         document.getElementById("suggestionsArrival").style.display = "none";
     }
 })
+
+function getSelectedAdress(){
+    const departAdress = document.getElementById("departAdress");
+    const arrivalAdress = document.getElementById("arrivalAdress");
+    const selectedAdressDepart = document.getElementById("selectedAdressDepart");
+    const selectedAdressArrival = document.getElementById("selectedAdressArrival");
+
+    if(departAdress.value.trim() !==""){
+        selectedAdressDepart.textContent = departAdress.value;
+    } else{
+        selectedAdressDepart.textContent = "Aucune adresse sélectionnée";
+    }
+    if(arrivalAdress.value.trim() !==""){
+        selectedAdressArrival.textContent = arrivalAdress.value;
+    } else{
+        selectedAdressArrival.textContent = "Aucune adresse sélectionnée";
+    }
+}
+
+document.getElementById("departAdress").addEventListener("input", getSelectedAdress);
+document.getElementById("arrivalAdress").addEventListener("input", getSelectedAdress);

@@ -88,3 +88,16 @@ function showAndHideElementsForRoles(){
     })
 }
 
+function requiredConnexion(){
+    const userConnected = isConnected();
+    
+        if(userConnected){
+            window.location.href = "/add-trip";
+        } else{
+            window.location.href ="/login";
+        }
+    }
+
+    document.querySelectorAll(".required-connexion-btn").forEach(button =>{
+        button.addEventListener("click", (requiredConnexion));
+    });
