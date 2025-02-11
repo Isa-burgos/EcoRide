@@ -1,4 +1,13 @@
-<section class="big-hero text-center">
+<?php 
+
+require_once __DIR__ . "/templates/header.php";
+require_once __DIR__ . "/lib/session.php";
+
+?>
+
+    <!-- START MAIN -->
+
+    <section class="big-hero text-center">
     <div class="big-hero-content">
         <h1>Trouvez <br><strong>un covoiturage</strong></h1>
         <h2>La solution accessible et durable pour tous</h2>
@@ -68,5 +77,6 @@
     <p>Avec EcoRide, chaque kilomètre compte pour un avenir plus vert. Ensemble, nous pouvons changer la façon dont nous nous déplaçons tout en protégeant notre planète.</p>
     </div>
 </section>
+    <!-- END MAIN -->
 
-   
+<?php require_once __DIR__ . "/templates/footer.php"?>
