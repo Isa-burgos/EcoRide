@@ -1,3 +1,13 @@
+<?php
+  require_once __DIR__ . "/../lib/session.php";
+
+  // ✅ Test pour voir si quelque chose est envoyé avant le DOCTYPE
+  if (headers_sent($file, $line)) {
+      die("❌ Erreur : Des en-têtes ont déjà été envoyés dans $file à la ligne $line.");
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,7 +17,6 @@
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/script.js/" defer></script>
     <script src="/js/geolocation.js" defer></script>
-    <script type="module" src="/Router/router.js" defer></script>
     <title>EcoRide</title>
 </head>
 <body>
@@ -35,18 +44,23 @@
                   <li class="nav-item">
                     <button class="nav-link required-connexion-btn" type="button">Ajouter un trajet</button>
                   </li>
-                  <li class="nav-item" data-show="disconnected">
-                    <a class="nav-link" href="/login.php">Se connecter</a>
-                  </li>
-                  <li class="nav-item" data-show="disconnected">
-                    <a class="nav-link" href="/register">Créer un compte</a>
-                  </li>
-                  <li class="nav-item" data-show="connected">
-                    <a class="nav-link" href="/dashboard">Mon compte</a>
-                  </li>
-                  <li class="nav-item" data-show="connected">
-                    <button class="nav-link" type="button" id="signout-btn">Déconnexion</button>
-                  </li>
+                  <?php if (isset($_SESSION['user'])){ ?>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/dashboard.php">Mon compte</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/logout.php">Déconnexion</a>
+                    </li>
+                      
+                    <?php } else { ?>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/login.php">Se connecter</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/register.php">Créer un compte</a>
+                    </li>
+
+                    <?php } ?>
                 </ul>
               </div>
             </div>
