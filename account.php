@@ -1,0 +1,258 @@
+<?php 
+    require_once __DIR__ . "/templates/header.php";
+?>
+
+<main>
+    <section class="big-hero text-center">
+        <div class="big-hero-content">
+            <h1>Mon compte</h1>
+        </div>
+    </section>
+    
+    <section class="conteneur">
+        <div class="formulaire-title m-auto">
+            <h2>Informations générales</h2>
+        </div>
+    
+        <form class="form" action="">
+            <div class="d-flex pt-2">
+                <div class="me-2">
+                    <input type="radio" id="homme" name="genre" checked>
+                    <label for="homme">Homme</label>
+                </div>
+                <div>
+                    <input type="radio" id="femme" name="genre">
+                    <label for="femme">Femme</label>
+                </div>
+            </div>
+    
+            <div>
+                <label for="name"></label>
+                <input class="input" type="text" name="name" id="name" placeholder="Nom" value="Doe">
+            </div>
+            <div>
+                <label for="firstname"></label>
+                <input class="input" type="text" name="firstname" id="firstname" placeholder="Prénom" value="John">
+            </div>
+            <div>
+                <label for="phoneNumber"></label>
+                <input class="input" type="text" name="phoneNumber" id="phoneNumber" placeholder="0606060606" value="0606060606">
+            </div>
+            <div>
+                <label for="annees">Année de naissance</label>
+                <select class="form-select input bg-light" aria-label="select annee de naissance" name="annees">
+                    <option value="1945">1945</option>
+                    <option value="1946">1946</option>
+                    <option value="1947">1947</option>
+                    <option value="1948">1948</option>
+                    <option value="1949">1949</option>
+                    <option value="1950">1950</option>
+                    <option value="1951">1951</option>
+                    <option value="1952">1952</option>
+                    <option value="1953">1953</option>
+                    <option value="1954">1954</option>
+                    <option value="1955">1955</option>
+                    <option value="1956">1956</option>
+                    <option value="1957">1957</option>
+                    <option value="1958">1958</option>
+                    <option value="1959">1959</option>
+                    <option value="1960">1960</option>
+                    <option value="1961">1961</option>
+                    <option value="1962">1962</option>
+                    <option value="1963">1963</option>
+                    <option value="1964">1964</option>
+                    <option value="1965">1965</option>
+                    <option value="1966">1966</option>
+                    <option value="1967">1967</option>
+                    <option value="1968">1968</option>
+                    <option value="1969">1969</option>
+                    <option value="1970">1970</option>
+                    <option value="1971">1971</option>
+                    <option value="1972">1972</option>
+                    <option value="1973">1973</option>
+                    <option value="1974">1974</option>
+                    <option value="1975">1975</option>
+                    <option value="1976">1976</option>
+                    <option value="1977">1977</option>
+                    <option value="1978">1978</option>
+                    <option value="1979">1979</option>
+                    <option value="1980">1980</option>
+                    <option value="1981">1981</option>
+                    <option value="1982">1982</option>
+                    <option value="1983">1983</option>
+                    <option value="1984">1984</option>
+                    <option value="1985">1985</option>
+                    <option value="1986">1986</option>
+                    <option value="1987">1987</option>
+                    <option value="1988">1988</option>
+                    <option value="1989">1989</option>
+                    <option value="1990">1990</option>
+                    <option value="1991">1991</option>
+                    <option value="1992">1992</option>
+                    <option value="1993">1993</option>
+                    <option value="1994">1994</option>
+                    <option value="1995">1995</option>
+                    <option value="1996">1996</option>
+                    <option value="1997">1997</option>
+                    <option value="1998">1998</option>
+                    <option value="1999">1999</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                    <option value="2003">2003</option>
+                    <option value="2004">2004</option>
+                    <option value="2005">2005</option>
+                    <option value="2006">2006</option>
+                    <option value="2007">2007</option>
+                    <option value="2008">2008</option>
+                </select>
+            </div>
+            <div>
+                <label for="email"></label>
+                <input class="input" type="email" placeholder="Email" value="email@email.com">
+            </div>
+            <div>
+                <input class="checkbox" type="checkbox" id="isPassenger">
+                <label for="isPassenger">Je suis passager</label>
+            </div>
+            <div>
+                <input class="checkbox checkbox-driver" type="checkbox" id="isDriver">
+                <label for="isDriver">Je suis conducteur</label>
+    
+                <div class="hidden-content">
+                    <div class="formulaire-title mx-auto mt-2">
+                        <h2>Mon véhicule</h2>
+                    </div>
+        
+                    <div>
+                        <label for="immat">Plaque d'immatriculation</label>
+                        <input class="input" type="text" name="immat" id="immat" placeholder="XX-111-XX" value="XX-111-XX"
+                    </div>
+                    <div>
+                        <label for="immat-date">Date de la première immatriculation</label>
+                        <input class="input" type="date" name="immat-date" id="immat-date" placeholder="01/01/2020" value="01/01/2020">
+                    </div>
+                    <div>
+                        <label for="carBrand">Marque</label>
+                        <select class="form-select input" aria-label="select marque voiture" id="carBrand" name="carBrand">
+                            <option value="">Sélectionner une marque</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="carModel">Modèle</label>
+                        <select class="form-select input" aria-label="select modele voiture" id="carModel" name="carModel" disabled>
+                            <option value="">Sélectionner un modèle</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="carColor">Couleur</label>
+                        <select class="form-select input" aria-label="select couleur voiture" id="carColor" name="carColor">
+                            <option value="">Sélectionnez une couleur</option>
+                            <option value="blanc">Blanc</option>
+                            <option value="noir">Noir</option>
+                            <option value="gris">Gris</option>
+                            <option value="bleu">Bleu</option>
+                            <option value="rouge">Rouge</option>
+                            <option value="vert">Vert</option>
+                            <option value="jaune">Jaune</option>
+                            <option value="orange">Orange</option>
+                            <option value="marron">Marron</option>
+                            <option value="violet">Violet</option>
+                            <option value="rose">Rose</option>
+                            <option value="beige">Beige</option>
+                        </select>
+                    </div>
+                    <div class="formulaire-title mb-3">
+                        <a href="#">Ajouter un véhicule</a>
+                    </div>
+                    <div>
+                        <label for="place">Places disponibles</label>
+                        <select class="form-select input" aria-label="select marque voiture" id="marque" name="marque">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+        
+                    <div class="formulaire-title">
+                        <div class="formulaire-title">
+                            <h2>Préférences</h2>
+                        </div>
+                        <fieldset>
+                            <legend>Fumeur</legend>
+                            <div class="d-flex">
+                                <div class="me-3 mb-2">
+                                    <input type="radio" checked>
+                                    <label for="">Oui</label>
+                                </div>
+                                <div>
+                                    <input type="radio">
+                                    <label for="">Non</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        </div>     
+                        <fieldset>
+                            <legend>Animal</legend>
+                            <div class="d-flex">
+                                <div class="me-3 mb-2">
+                                    <input type="radio" checked>
+                                    <label for="">Oui</label>
+                                </div>
+                                <div>
+                                    <input type="radio">
+                                    <label for="">Non</label>
+                                </div>
+                            </div>
+                            <div class="formulaire-title">
+                                <a href="#">Ajouter une préférence</a>
+                            </div> 
+                </div>
+            </div>
+        </form>
+    </section>
+    
+    <button class="btn d-flex justify-content-center" type="submit">Valider</button>
+    <section class="page my-3">
+        <div class="formulaire-title mx-auto mb-3">
+            <h2>Mot de passe</h2>
+        </div>
+        <div class="formulaire-title m-auto">
+            <a href="#">Modifier mon mot de passe</a>
+        </div>
+    </section>
+    <section class="page">
+        <div class="formulaire-title mx-auto mb-3">
+            <h2>Supprimer mon compte</h2>
+        </div>
+        <div class="formulaire-title m-auto">
+            <p>La suppression de compte est définitive. Vos données personnelles ainsi que vos annonces seront supprimées.</p>
+        </div>
+        <button class="btn btn-danger d-flex justify-content-center" type="submit" data-bs-toggle="modal" data-bs-target="#suppressionModal">Supprimer mon compte</button>
+    </section>
+    <div style="height: 1rem;"></div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="suppressionModal" tabindex="-1" aria-labelledby="suppressionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content bg-secondary">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="suppressionModalLabel">Supprimer mon compte</h1>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container mt-3 text-center">
+                    <p>Voulez-vous vraiment supprimer votre compte ?</p>
+                    <div class="container d-flex justify-content-center">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-secondary">Confirmer la suppression</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</main>
+
+<?php require_once __DIR__ . "/templates/footer.php"?>

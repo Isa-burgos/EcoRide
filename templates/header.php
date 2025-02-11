@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="/assets/css/main.min.css">
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/script.js/" defer></script>
-    <script src="/js/geolocation.js" defer></script>
+    <script src="/js/addTrip.js" defer></script>
+    <script src="/js/account.js" defer></script>
     <title>EcoRide</title>
 </head>
 <body>
@@ -36,13 +37,13 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="/pages/covoiturages.html">Covoiturages</a>
+                    <a class="nav-link" href="/covoiturages.php">Covoiturages</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link" href="/contact.php">Contact</a>
                   </li>
                   <li class="nav-item">
-                    <button class="nav-link required-connexion-btn" type="button">Ajouter un trajet</button>
+                    <a class="nav-link required-connexion-btn" href="/add-trip.php">Ajouter un trajet</a>
                   </li>
                   <?php if (isset($_SESSION['user'])){ ?>
                     <li class="nav-item">

@@ -14,7 +14,7 @@
     <section class="conteneur">
         <div class="conteneur-content">
             <div class="dashboard__options">
-                <a class="dashboard__options-content" href="/account">
+                <a class="dashboard__options-content" href="/account.php">
                     <span class="dashboard__options-picto picto-profile"></span>
                     <h3 class="dashboard__options-title">Mon compte</h3>
                 </a>
