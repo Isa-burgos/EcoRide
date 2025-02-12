@@ -4,7 +4,7 @@
 
     <!-- START MAIN -->
 
-<main>
+<main class="mb-5">
     <section class="big-hero text-center">
     <div class="big-hero-content">
         <h1>Trouvez <br><strong>un covoiturage</strong></h1>
@@ -34,7 +34,7 @@
 <section class="trip text-center">
     <h2>Vous avez une voiture ?</h2>
     <p>Proposez des trajets et économisez sur vos déplacements</p>
-    <button type="button" class="btn required-connexion-btn">Proposer un trajet</button>
+    <a href="/add-trip.php" class="btn">Proposer un trajet</a>
 </section>
 
 <section class="about text-center">

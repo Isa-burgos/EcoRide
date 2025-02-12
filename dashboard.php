@@ -27,7 +27,7 @@
                 </a>
             </div>
             <div class="dashboard__options">
-                <a class="dashboard__options-content" href="#">
+                <a class="dashboard__options-content" href="/historique.php">
                     <span class="dashboard__options-picto picto-historique"></span>
                     <h3 class="dashboard__options-title">Mon historique</h3>
                 </a>

@@ -3,7 +3,7 @@
     color: $white;
     border: 1px solid $primary;
     border-radius: 3px;
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
     margin: 2rem auto 2rem auto;
     &:hover{
         background-color: darken($primary, 10%);

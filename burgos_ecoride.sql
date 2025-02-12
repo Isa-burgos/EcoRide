@@ -93,3 +93,25 @@ ALTER TABLE user MODIFY COLUMN password VARCHAR(255) NOT NULL;
 
 DESCRIBE user;
 
+UPDATE user 
+SET pseudo = 'JohnD',
+    phone = '0606060606',
+    adress = '20 rue de la ville, 07200 Aubenas',
+    birth_date = '1980-01-01',
+    photo = 'photo',
+    gender = 'homme'
+WHERE user_id = 3; 
+
+SELECT * FROM vehicle;
+
+INSERT INTO carshare (price_person, depart_adress, arrival_adress, depart_date, arrival_date, depart_time, arrival_time, statut, nb_place, used_vehicle) 
+VALUES ('3', 'Aubenas', 'Montélimar', '2023-02-02', '2023-02-02', '08-00', '08-45', 'terminé', '2', 1);
+
+INSERT INTO vehicle (registration, first_registration_date, brand, model, color, energy, belong)
+VALUES ('XX-000-XX', '2020-01-01', 'Renault', 'Captur', 'gris', 'thermique', 3)
+                                                    
+ALTER TABLE vehicle ADD COLUMN energy_icon VARCHAR(255) NOT NULL;
+
+UPDATE vehicle SET energy_icon = 'electric-icon.svg' WHERE energy = 'électrique';
+UPDATE vehicle SET energy_icon = 'thermal-icon.svg' WHERE energy = 'thermique';
+
