@@ -115,3 +115,7 @@ ALTER TABLE vehicle ADD COLUMN energy_icon VARCHAR(255) NOT NULL;
 UPDATE vehicle SET energy_icon = 'electric-icon.svg' WHERE energy = 'électrique';
 UPDATE vehicle SET energy_icon = 'thermal-icon.svg' WHERE energy = 'thermique';
 
+DESCRIBE carshare;
+
+SELECT * FROM role;
+

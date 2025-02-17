@@ -34,7 +34,7 @@
 <section class="trip text-center">
     <h2>Vous avez une voiture ?</h2>
     <p>Proposez des trajets et économisez sur vos déplacements</p>
-    <a href="/add-trip.php" class="btn">Proposer un trajet</a>
+    <a href="/trip.php" class="btn">Proposer un trajet</a>
 </section>
 
 <section class="about text-center">

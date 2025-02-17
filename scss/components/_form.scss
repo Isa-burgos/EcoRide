@@ -24,7 +24,7 @@
     position: relative;
 
     input {
-        padding-right: 40px; // Laisser de la place pour l'icône
+        padding-right: 40px;
     }
 }
 
@@ -32,16 +32,16 @@
     position: absolute;
     right: 1rem;
     top: 2.6rem;
-    transform: translateY(-50%); // Centre verticalement
+    transform: translateY(-50%);
     width: 30px;
     height: 30px;
-    background: url('/assets/img/geoloc.svg') no-repeat center;
+    background: url('/assets/icons/geoloc.svg') no-repeat center;
     border: none;
     cursor: pointer;
-    text-indent: -9999px; // Cache le texte pour l'accessibilité
+    text-indent: -9999px;
     outline: none;
 
     &:hover {
-        filter: brightness(1.2); // Effet au survol
+        filter: brightness(1.2);
     }
 }

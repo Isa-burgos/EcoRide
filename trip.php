@@ -1,5 +1,45 @@
-<?php 
-    require_once __DIR__ . "/templates/header.php";
+<?php
+
+require_once __DIR__ . "/templates/header.php";
+require_once __DIR__ . "/lib/pdo.php";
+require_once __DIR__ . "/lib/add-trip.php";
+require_once __DIR__ . "/lib/vehicle.php";
+require_once __DIR__ . "/lib/session.php";
+
+    $departAdress = htmlspecialchars(trim($_POST['depart_adress'] ?? ''));
+    $arrivalAdress = htmlspecialchars(trim($_POST['arrival_adress'] ?? ''));
+    $departDate = htmlspecialchars(trim($_POST['depart_date'] ?? ''));
+    $hour = $_POST['hour'] ?? '';
+    $minute = $_POST['minute'] ?? '';
+    $departTime = sprintf('%02d:%02d:00', intval($_POST['hour'] ?? 0), intval($_POST['minute'] ?? 0));
+    $arrivalTime = htmlspecialchars(trim($_POST['arrival_time'] ?? '00:00:00'));
+    $nbPlace = isset($_POST['nb_place']) ? intval($_POST['nb_place']) : 1;
+    $pricePerson = isset($_POST['price_person']) ? floatval($_POST['price_person']) : 3;
+    $vehicleId = isset($_POST['used_vehicle']) ? intval($_POST['used_vehicle']) : 0;
+
+    $userVehicles = [];
+    $errorCarshare = [];
+
+    if(isUserConnected()){
+        $userId = $_SESSION['user']['user_id'];
+        $userVehicles = getUserVehicles($pdo, $userId);
+    }
+
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['saveAnnonce'])) {
+        $_SESSION['carshare'] = $_POST;
+        if (!empty($departAdress) && !empty($arrivalAdress) && !empty($departDate) && !empty($departTime) && $nbPlace > 0 && $pricePerson > 0 && $vehicleId > 0) {
+            $resultat = saveAnnonce($pdo, $departAdress, $arrivalAdress, $departDate, $departTime, $arrivalTime, $nbPlace, $pricePerson, $vehicleId);
+            if($resultat){
+                header('location: /historique.php');
+                exit();
+            } else{
+                $errorCarshare[] = "Le trajet n'a pas été enregistré";
+            }
+        } else {
+            $errorCarshare[]= "Veuillez remplir les champs obligatoires";
+        }
+    }
 ?>
 
 <main>
@@ -9,9 +49,19 @@
         </div>
     </section>
 
-    <?php if (isset($_SESSION['user'])) {?>
+    <?php if (isUserConnected()) {?>
+
+        <div class="container mt-5">
+            <?php foreach ($errorCarshare as $error) { ?>
+            <div class="alert alert-danger">
+                <?= $error; ?>
+            </div>
+        <?php } ?>
+        </div>
         <section class="conteneur">
-            <form class="conteneur-content" action="">
+            <form class="conteneur-content" method="POST" action="trip.php">
+
+            <!-- START STEP 1 -->
                     <div id="step1" class="step active">
                         <h2>Mon trajet</h2>
                         <hr class="separator">
@@ -19,8 +69,8 @@
                             <fieldset>
                                 <legend>Adresse de départ</legend>
                                 <div class="input-container">
-                                    <label for="departAdress"></label>
-                                    <input class="input startAdress" type="text" name="departAdress" id="departAdress" placeholder="Adresse de départ" required>
+                                    <label for="depart_adress"></label>
+                                    <input class="input startAdress" type="text" value="<?= $departAdress?>" name="depart_adress" id="departAdress" placeholder="Adresse de départ" required>
                                     <div id="suggestionsDepart" class="suggestions-container"></div>
                                     <button type="button" class="btn-geoloc" id="geolocDepart" aria-label="Utiliser ma position"></button>
                                     <div class="invalid-feedback">
@@ -35,8 +85,8 @@
                             <fieldset>
                                 <legend>Adresse d'arrivée</legend>
                                 <div class="input-container">
-                                    <label for="arrivalAdress"></label>
-                                    <input class="input endAdress" type="text" name="arrivalAdress" id="arrivalAdress" placeholder="Adresse d'arrivée" required>
+                                    <label for="arrival_adress"></label>
+                                    <input class="input endAdress" type="text" value="<?= $arrivalAdress?>" name="arrival_adress" id="arrivalAdress" placeholder="Adresse d'arrivée" required>
                                     <div id="suggestionsArrival" class="suggestions-container"></div>
                                     <button type="button" class="btn-geoloc" id="geolocArrival" aria-label="Utiliser ma position"></button>
                                     <div class="invalid-feedback">
@@ -53,7 +103,9 @@
                             <button type="button" class="btn btn-next">Étape suivante</button>
                         </div>
                     </div>
-                    
+            <!-- END STEP 1 -->
+
+            <!-- START STEP 2 -->
                     <div id="step2" class="step">
                         <h2>Mon véhicule</h2>
                         <hr class="separator">
@@ -62,18 +114,22 @@
                                 <legend></legend>
                                 <div>
                                     <legend for="carChoice">Je choisis un véhicule</legend>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                        Véhicule 1
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                        Véhicule 2
-                                        </label>
-                                    </div>
+                                    <?php if(!empty($userVehicles)) : ?>
+                                        <?php foreach($userVehicles as$index => $vehicle) : ?>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio"
+                                                        name="used_vehicle"
+                                                        value="<?= $vehicle['vehicle_id']?>"
+                                                        id="vehicle_<?= $vehicle['vehicle_id']?>"
+                                                        <?=count($userVehicles) === 1 ? 'checked' : '' ?>>
+                                                <label class="form-check-label text-white" for="vehicle_<?= $vehicle['vehicle_id']; ?>">
+                                                <?= htmlspecialchars($vehicle['brand'] . " " . $vehicle['model']); ?>
+                                                </label>
+                                            </div>
+                                        <?php endforeach ?>
+                                    <?php else : ?>
+                                        <p>Aucun véhicule enregistré <a href="/add-vehicle.php">Ajouter un véhicule</a></p>
+                                    <?php endif ?>
                                 </div>
                                 <div class="reservation">
                                     <div class="passenger-quantity p-0">
@@ -88,11 +144,12 @@
                                             </div>
                                         </div>
                                         <div class="passenger-quantity-and-price p-2">
-                                            <div class="quantity-selector">
-                                                <button class="btn-quantity decrease">-</button>
-                                                <input type="input" class="quantity-input" value="1" readonly>
-                                                <button class="btn-quantity increase">+</button>
+                                            <div class="quantity-selector btn-quantity-selector">
+                                                <button type="button" class="btn-quantity decrease">-</button>
+                                                <input type="text" name="quantityPassenger" class="passengerCount quantity-input" value="<?= $nbPlace?>" readonly>
+                                                <button type="button" class="btn-quantity increase">+</button>
                                             </div>
+                                            <input type="hidden" name="nb_place" id="nbPlaceInput" value="<?= $nbPlace?>">
                                         </div>
                                     </div>
                                 </div>
@@ -126,6 +183,9 @@
                             <button type="button" class="btn btn-next mx-2">Étape suivante</button>
                         </div>
                     </div>
+            <!-- END STEP 2 -->
+
+            <!-- START STEP 3 -->
                     <div id="step3" class="step">
                         <h2>Date et heure</h2>
                         <hr class="separator">
@@ -135,44 +195,33 @@
                                 <div>
                                     <div>
                                         <div>
-                                            <label for="">Jour</label>
-                                            <input class="input form-control" type="date" required>
+                                            <label for="depart_date">Jour</label>
+                                            <input class="input form-control" name="depart_date" id="depart_date" type="date" value="<?= $departDate?>" required>
                                         </div>
                                         <div>
                                             <fieldset>
                                                 <legend>Heure</legend>
                                                 <select class="input" name="hour" id="hour">
-                                                    <option value="08">08</option>
-                                                    <option value="09">09</option>
-                                                    <option value="10">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                    <option value="13">13</option>
-                                                    <option value="14">14</option>
-                                                    <option value="15">15</option>
-                                                    <option value="16">16</option>
-                                                    <option value="17">17</option>
-                                                    <option value="18">18</option>
-                                                    <option value="19">19</option>
-                                                </select>
-                                                <label for="minute">min</label>
-                                                <select class="input" name="minute" id="minute">
-                                                    <option value="00">00</option>
-                                                    <option value="15">15</option>
-                                                    <option value="30">30</option>
-                                                    <option value="45">45</option>
+                                                    <?php for($h = 8; $h <= 19; $h++): ?>
+                                                        <option value="<?= sprintf('%02d', $h) ?>" <?= ($hour == $h) ? 'selected' : '' ?>>
+                                                            <?= sprintf('%02d', $h) ?>
+                                                        </option>
+                                                    <?php endfor ?>
                                                 </select>
                                                 <label for="hour">h</label>
+                                                <select class="input" name="minute" id="minute">
+                                                    <?php foreach (["00", "15", "30", "45"] as $m): ?>
+                                                        <option value="<?= $m ?>" <?= ($minute == $m) ? 'selected' : '' ?>>
+                                                            <?= $m ?>
+                                                        </option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                                <label for="minute">min</label>
+                                                <input type="hidden" name="depart_time" id="depart_time" value="<?= $departTime?>">
+                                                <input type="hidden" name="arrival_time" id="arrival_time" value="<?= $arrivalTime?>">
+
                                             </fieldset>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <label for="">Je partirai</label>
-                                        <select class="input" name="" id="">
-                                            <option value="0" selected>A l'heure indiquée</option>
-                                            <option value="15">+/- 15 minutes</option>
-                                            <option value="30">+/- 30 minutes</option>
-                                        </select>
                                     </div>
                                 </div>
                             </fieldset>
@@ -182,6 +231,9 @@
                             <button type="button" class="btn btn-next mx-2">Étape suivante</button>
                         </div>
                     </div>
+        <!-- END STEP 3 -->
+
+        <!-- START STEP 4 -->
                     <div id="step4" class="step">
                         <h2>Itinéraire et coût</h2>
                         <hr class="separator">
@@ -189,9 +241,9 @@
                             <fieldset>
                                 <legend>Itinéraire</legend>
                                 <div>
-                                    <p>Votre itinéraire fait <strong>x km</strong> et vous empruntez une route à péage</p>
+                                    <p>Votre itinéraire fait <strong><span id="tripDistance"></span></strong></p>
                                     <br>
-                                    <a href="">Visualiser ou modifier</a>
+                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#mapModal">Visualiser votre itinéraire</button>
                                 </div>
                                 <div>
                                     <input type="checkbox">
@@ -204,15 +256,16 @@
                                     <div class="passenger-quantity p-0">
                                         <div class="passenger-icon p-2">
                                             <div class="trip-passenger">
-                                                <p class="m-0">Prix par passager (€)</p>
+                                                <p class="m-0">Prix par passager (crédit)</p>
                                             </div>
                                         </div>
                                         <div class="passenger-quantity-and-price p-2">
-                                            <div class="quantity-selector">
-                                                <button class="btn-quantity decrease">-</button>
-                                                <input type="input" class="quantity-input" value="1" readonly>
-                                                <button class="btn-quantity increase">+</button>
+                                            <div class="quantity-credit-selector btn-quantity-selector">
+                                                <button type="button" class="btn-quantity decrease">-</button>
+                                                <input type="text" class="creditCount quantity-input" value="<?= $pricePerson?>" readonly>
+                                                <button type="button" class="btn-quantity increase">+</button>
                                             </div>
+                                            <input type="hidden" name="price_person" id="creditInput" value="<?= $pricePerson?>">
                                         </div>
                                     </div>
                                 </div>
@@ -223,6 +276,11 @@
                             <button type="button" class="btn btn-next mx-2">Étape suivante</button>
                         </div>
                     </div>
+        <!-- END STEP 4 -->
+
+        <!-- START STEP 5 -->
+
+
                     <div id="step5" class="step">
                         <h2>Publication</h2>
                         <hr class="separator">
@@ -231,21 +289,21 @@
                                 <legend>Mon trajet</legend>
                                 <div>
                                     <div>
-                                        <p>Départ : <span>Villeneuve-de-Berg</span></p>
-                                        <p>Arrivée : <span>Valence</span></p>
+                                        <p>Départ : <span><?= $_SESSION['carshare']['depart_adress'] ?? '' ?></span></p>
+                                        <p>Arrivée : <span><?= $_POST['arrival_adress'] ?? '' ?></span></p>
                                     </div>
                                     <div>
-                                        <p>Distance : <span>90 km</span></p>
-                                        <p>Durée théorique : <span>1h05</span></p>
+                                        <p>Distance : <span id="tripDistanceRecap">-- km</span></p>
+                                        <p>Durée théorique : <span id="tripDurationRecap">-- min</span></p>
                                     </div>
-                                    <a href="#">Modifier</a>
+                                    <a href="#step1">Modifier</a>
                                 </div>
                             </fieldset>
                             <fieldset>
                                 <legend>Mon véhicule</legend>
                                 <div>
                                     <div>
-                                        <p>Places disponibles : <span>3</span></p>
+                                        <p>Places disponibles : <span><?= $_POST['nb_place'] ?? 'Non renseigné' ?></span></p>
                                         <p>Véhicule thermique</p>
                                         <p>Véhicule non fumeur</p>
                                         <p>Pas d'animaux de compagnie</p>
@@ -257,15 +315,14 @@
                             <fieldset>
                                 <legend>Date et heure</legend>
                                 <div>
-                                    <p>Départ le <span> date </span>à<span> heure </span></p>
-                                    <p>Je partirai <span> à l'heure indiquée </span></p>
+                                    <p>Départ le <span> <?= $_POST['depart_date'] ?? 'Non renseigné' ?> </span>à<span> <?= $_POST['depart_time'] ?? 'Non renseigné' ?> </span></p>
                                 </div>
                                 <a href="#">Modifier</a>
                             </fieldset>
                             <fieldset>
                                 <legend>Prix</legend>
                                 <div>
-                                    <p>Prix par passager :<span> 5€</span></p>
+                                    <p>Prix par passager :<span> <?= $_POST['price_person'] ?? 'Non renseigné' ?></span></p>
                                 </div>
                                 <a href="#">Modifier</a>
                             </fieldset>
@@ -273,11 +330,12 @@
                         </div>
                         <div class="step-buttons">
                             <button type="button" class="btn btn-prev mx-2">Étape précédente</button>
-                            <button type="submit" class="btn btn-submit mx-2">Créer mon annonce</button>
+                            <input type="submit" value="Créer mon annonce" name="saveAnnonce" class="btn btn-submit mx-2">
                         </div>
                     </div>
-                </form>
-            </section>
+        <!-- END STEP 5 -->
+            </form>
+        </section>
             <?php } else { ?>
                 <div class="container conteneur pt-5">
                     <div class="conteneur-content d-flex justify-content-center flex-wrap">
@@ -287,6 +345,30 @@
     
             <?php } ?>
                 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-secondary">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="mapModalLabel">Choisir mon itinéraire</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container mt-3" id="map" style="height: 350px;">
+                </div>
+                <div class="modal-footer d-flex flex-column align-items-center">
+                <p class="w-100 text-center mb-2">Distance estimée : <strong id="tripDistanceModal">-- km</strong></p>
+                <p class="w-100 text-center mb-2">Durée estimée : <strong id="tripDurationModal">-- min</strong></p>
+                <div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary">Valider ce trajet</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </main>
 

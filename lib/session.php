@@ -16,3 +16,8 @@ if (session_status() === PHP_SESSION_NONE) {
 if (isset($_SESSION['user'])) {
     setcookie(session_name(), session_id(), time() + $session_lifetime, "/");
 }
+
+function isUserConnected():bool
+{
+    return isset($_SESSION['user']);
+}

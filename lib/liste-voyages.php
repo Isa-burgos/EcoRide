@@ -1,9 +1,5 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-
 function getTripListByUserId(PDO $pdo, int $userId):array
 {
     $query = $pdo->prepare("SELECT carshare.*, vehicle.energy_icon AS energy_icon

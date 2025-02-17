@@ -1,10 +1,6 @@
 <?php
   require_once __DIR__ . "/../lib/session.php";
 
-  // ✅ Test pour voir si quelque chose est envoyé avant le DOCTYPE
-  if (headers_sent($file, $line)) {
-      die("❌ Erreur : Des en-têtes ont déjà été envoyés dans $file à la ligne $line.");
-  }
 ?>
 
 
@@ -14,10 +10,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/main.min.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/script.js/" defer></script>
+    <script src="/js/script.js" defer></script>
+    <script src="/js/quantity.js" defer></script>
     <script src="/js/addTrip.js" defer></script>
     <script src="/js/account.js" defer></script>
+    <script src="/js/register.js" defer></script>
+    <script src="/js/login.js" defer></script>
     <title>EcoRide</title>
 </head>
 <body>
@@ -43,9 +46,9 @@
                     <a class="nav-link" href="/contact.php">Contact</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link required-connexion-btn" href="/add-trip.php">Proposer un trajet</a>
+                    <a class="nav-link required-connexion-btn" href="/trip.php">Proposer un trajet</a>
                   </li>
-                  <?php if (isset($_SESSION['user'])){ ?>
+                  <?php if (isUserConnected()){ ?>
                     <li class="nav-item">
                       <a class="nav-link" href="/dashboard.php">Mon compte</a>
                     </li>
