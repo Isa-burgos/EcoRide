@@ -65,14 +65,14 @@
             </div>
             <div>
                 <label for="pseudo"></label>
-                <input class="input form-control" name="pseudo" type="text" id="pseudo" placeholder="Pseudo" value="<?= htmlspecialchars($user['pseudo'])?>" required>
+                <input class="input form-control" name="pseudo" type="text" id="pseudo" placeholder="Pseudo" value="<?= htmlspecialchars($user['pseudo'] ??'')?>" required>
                 <div class="invalid-feedback">
                     Le pseudo est requis
                 </div>
             </div>
             <div>
-                <label for="phoneNumber"></label>
-                <input class="input" type="text" name="phone" id="phone" placeholder="0606060606" value="<?= htmlspecialchars($user['phone'])?>">
+                <label for="phoneNumber">Téléphone</label>
+                <input class="input" type="text" name="phone" id="phone" placeholder="0606060606" value="<?= htmlspecialchars($user['phone'] ?? '')?>">
             </div>
             <div>
                 <label for="birth_date">Date de naissance</label>
@@ -194,7 +194,6 @@
                             </select>
                         </div>
                         <div class="formulaire-title mb-3">
-                            <a href="#">Ajouter un véhicule</a>
                         </div>
                         <div>
                             <label for="nb_place">Places disponibles</label>

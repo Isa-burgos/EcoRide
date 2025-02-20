@@ -110,7 +110,7 @@ UPDATE vehicle SET energy_icon = 'thermal-icon.svg' WHERE energy = '0';
 ALTER TABLE user 
 MODIFY COLUMN photo VARCHAR(255) NULL;
 
-UPDATE user SET password = '$2y$10$NHfWFDr9W8UheID4WGD8kei2gRx48aj5vBQP/5iASYrLqHRkYN6km' WHERE email = 'dupontmartine@email.fr';
+UPDATE user SET password = '$2y$10$N00F1.1wZNG.6KkNwof.0.iiZ2URx51jpo8UTWhGg.RNGMTlWmtCO' WHERE email = 'martinpatricia@email.fr';
 
 CREATE TABLE preferences (
     preference_id INT(11) AUTO_INCREMENT PRIMARY KEY,
