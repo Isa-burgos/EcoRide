@@ -6,7 +6,8 @@ session_set_cookie_params([
     'lifetime' => $session_lifetime,
     'path' => '/',
     'domain' => '.ecoride.local',
-    'httponly' => true
+    'httponly' => true,
+    'samesite' => 'Strict'
 ]);
 
 if (session_status() === PHP_SESSION_NONE) {

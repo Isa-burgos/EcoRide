@@ -3,7 +3,7 @@
 function saveAnnonce(PDO $pdo, string $departAdress, string $arrivalAdress, string $departDate, string $departTime, string $arrivalTime, int $nbPlace, float $pricePerson, int $vehicleId): bool {
 
     if (!isset($_SESSION['user']['user_id'])) {
-        die("⚠️ Erreur : L'utilisateur n'est pas connecté !");
+        die("Erreur : L'utilisateur n'est pas connecté !");
     }
 
     $query = $pdo->prepare("

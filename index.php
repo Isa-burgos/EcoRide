@@ -12,12 +12,12 @@
         <div class="search container w-100">
             <form class="row row-cols-1 row-cols-lg-4 my-2" action="">
                 <div class="input-container gx-1">
-                    <input class="startAdress input" type="text" placeholder="Adresse de départ">
-                    <button type="button" class="btn-geoloc" id="geolocDepart" aria-label="Utiliser ma position"></button>
+                    <input class="startAdress input" type="text" value="" name="depart_adress" id="departAdress" placeholder="Adresse de départ" required>
+                    <div id="suggestionsDepart" class="suggestions-container"></div>
                 </div>
                 <div class="input-container gx-1">
-                    <input class="endAdress input" type="text" placeholder="Adresse d'arrivée">
-                    <button type="button" class="btn-geoloc" id="geolocDepart" aria-label="Utiliser ma position"></button>
+                    <input class="endAdress input" type="text" value="" name="arrival_adress" id="arrivalAdress" placeholder="Adresse d'arrivée" required>
+                    <div id="suggestionsArrival" class="suggestions-container"></div>
                 </div>
                 <div class="input-container gx-1">
                     <input class="date-depart input" type="date" placeholder="Date de départ">

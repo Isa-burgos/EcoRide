@@ -10,9 +10,9 @@
                 <a href="#">Mentions légales</a>
             </div>
             <div class="contact col-6 col-lg-4">
-                <a href="#"><img src="/assets/img/facebook.svg" alt="Logo facebook"></a>
-                <a href="#"><img src="/assets/img/instagram.svg" alt="Logo instagram"></a>
-                <a href="#"><img src="/assets/img/linkedin.svg" alt="Logo linkedin"></a>
+                <a href="#"><img src="/assets/icons/facebook.svg" alt="Logo facebook"></a>
+                <a href="#"><img src="/assets/icons/instagram.svg" alt="Logo instagram"></a>
+                <a href="#"><img src="/assets/icons/linkedin.svg" alt="Logo linkedin"></a>
             </div>
         </div>
     </footer>

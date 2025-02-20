@@ -17,10 +17,4 @@ function registration(PDO $pdo, string $gender, string $name, string $firstname,
     $query->bindValue(':possess', $possess, PDO::PARAM_INT);
 
     return $query->execute();
-
-    if (!$result) {
-        die("Erreur d'insertion SQL : " . implode(" ", $query->errorInfo()));
-    }
-
-    return $result;
 }

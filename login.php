@@ -8,7 +8,10 @@
     $errors = [];
 
     if (isset($_POST['btnLogin'])) {
-        $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+
+        $user = verifyUserLoginPassword($pdo, $email, $password);
 
         if($user){
             $_SESSION['user'] = $user;

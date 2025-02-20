@@ -60,3 +60,21 @@ fetch(url)
             modelSelect.innerHTML = '<option value="">Erreur de chargement</option>';
         })
 })
+
+// hidden-content
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    const isDriverCheckbox = document.getElementById("isDriver");
+    const hiddenContent = document.querySelector(".hidden-content");
+
+    function toggleHiddenContent(){
+        if(isDriverCheckbox.checked){
+            hiddenContent.style.display = "block";
+        } else {
+            hiddenContent.style.display = "none";
+        }
+    }
+    toggleHiddenContent();
+    isDriverCheckbox.addEventListener("change", toggleHiddenContent);
+
+});

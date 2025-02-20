@@ -70,11 +70,11 @@ require_once __DIR__ . "/lib/session.php";
                                 <legend>Adresse de départ</legend>
                                 <div class="input-container">
                                     <label for="depart_adress"></label>
-                                    <input class="input startAdress" type="text" value="<?= $departAdress?>" name="depart_adress" id="departAdress" placeholder="Adresse de départ" required>
-                                    <div id="suggestionsDepart" class="suggestions-container"></div>
+                                    <input class="input startAdress" type="text" value="<?= $departAdress?>" name="depart_adress" placeholder="Adresse de départ" required>
+                                    <div class="suggestions-container"></div>
                                     <button type="button" class="btn-geoloc" id="geolocDepart" aria-label="Utiliser ma position"></button>
                                     <div class="invalid-feedback">
-                                        Ce champs est requis
+                                        Ce champ est requis
                                     </div>
                                 </div>
                                 <div>
@@ -86,11 +86,11 @@ require_once __DIR__ . "/lib/session.php";
                                 <legend>Adresse d'arrivée</legend>
                                 <div class="input-container">
                                     <label for="arrival_adress"></label>
-                                    <input class="input endAdress" type="text" value="<?= $arrivalAdress?>" name="arrival_adress" id="arrivalAdress" placeholder="Adresse d'arrivée" required>
-                                    <div id="suggestionsArrival" class="suggestions-container"></div>
+                                    <input class="input endAdress" type="text" value="<?= $arrivalAdress?>" name="arrival_adress" placeholder="Adresse d'arrivée" required>
+                                    <div class="suggestions-container"></div>
                                     <button type="button" class="btn-geoloc" id="geolocArrival" aria-label="Utiliser ma position"></button>
                                     <div class="invalid-feedback">
-                                        Ce champs est requis
+                                        Ce champ est requis
                                     </div>
                                 </div>
                                 <div>

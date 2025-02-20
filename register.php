@@ -103,14 +103,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registration'])){
                 </div>
             <div>
                 <label for="emailInput"></label>
-                <input class="input form-control" type="email" name="email" id="emailInput" placeholder="Email" value="">
+                <input class="input form-control" type="email" name="email" id="emailInput" placeholder="Email" value="" required>
                 <div class="invalid-feedback">
                     L'e-mail n'est pas au bon format
                 </div>
             </div>
             <div>
                 <label for="passwordInput"></label>
-                <input class="input form-control password" type="password" id="passwordInput" placeholder="Mot de passe" value="">
+                <input class="input form-control password" type="password" id="passwordInput" placeholder="Mot de passe" value="" required>
                 <div class="invalid-feedback">
                     Le mot de passe doit comporter au moins 8 caractères dont 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial
                 </div>

@@ -85,13 +85,7 @@ INSERT INTO role (name) VALUE ('utilisateur');
 
 INSERT INTO user (name, firstname, email, password, possess) VALUES ('Doe', 'John', 'test@test.fr', '123', 1);
 
-UPDATE user 
-SET password = '$2y$10$BY3nfGURBXf/rFvd1jlBiuphmHoZ.Ea0lAdUTLkvYkUsoX09reZKG' 
-WHERE email = 'test@test.fr';
-
 ALTER TABLE user MODIFY COLUMN password VARCHAR(255) NOT NULL;
-
-DESCRIBE user;
 
 UPDATE user 
 SET pseudo = 'JohnD',
@@ -102,8 +96,6 @@ SET pseudo = 'JohnD',
     gender = 'homme'
 WHERE user_id = 3; 
 
-SELECT * FROM vehicle;
-
 INSERT INTO carshare (price_person, depart_adress, arrival_adress, depart_date, arrival_date, depart_time, arrival_time, statut, nb_place, used_vehicle) 
 VALUES ('3', 'Aubenas', 'Montélimar', '2023-02-02', '2023-02-02', '08-00', '08-45', 'terminé', '2', 1);
 
@@ -112,10 +104,32 @@ VALUES ('XX-000-XX', '2020-01-01', 'Renault', 'Captur', 'gris', 'thermique', 3)
                                                     
 ALTER TABLE vehicle ADD COLUMN energy_icon VARCHAR(255) NOT NULL;
 
-UPDATE vehicle SET energy_icon = 'electric-icon.svg' WHERE energy = 'électrique';
-UPDATE vehicle SET energy_icon = 'thermal-icon.svg' WHERE energy = 'thermique';
+UPDATE vehicle SET energy_icon = 'electric-icon.svg' WHERE energy = '1';
+UPDATE vehicle SET energy_icon = 'thermal-icon.svg' WHERE energy = '0';
 
-DESCRIBE carshare;
+ALTER TABLE user 
+MODIFY COLUMN photo VARCHAR(255) NULL;
 
-SELECT * FROM role;
+UPDATE user SET password = '$2y$10$NHfWFDr9W8UheID4WGD8kei2gRx48aj5vBQP/5iASYrLqHRkYN6km' WHERE email = 'dupontmartine@email.fr';
 
+CREATE TABLE preferences (
+    preference_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(11) NOT NULL UNIQUE,
+    is_smoker TINYINT(1) NOT NULL DEFAULT 0,
+    smoking_icon VARCHAR(255) DEFAULT 'assets/icons/no-smoking.svg',
+    accept_pets TINYINT(1) NOT NULL DEFAULT 0,
+    pets_icon VARCHAR(255) DEFAULT 'assets/icons/no-pets.svg',
+    otherPreferences TEXT(500) DEFAULT NULL,
+    Foreign Key (user_id) REFERENCES user(user_id) ON DELETE CASCADE
+)
+
+SELECT vehicle_id, brand, model, energy FROM vehicle;
+
+ALTER TABLE preferences
+DROP FOREIGN KEY preferences_ibfk_1,
+DROP COLUMN user_id,
+ADD COLUMN vehicle_id INT NOT NULL,
+ADD CONSTRAINT preferences_vehicle FOREIGN KEY (vehicle_id) REFERENCES vehicle(vehicle_id) ON DELETE CASCADE;
+
+ALTER TABLE preferences
+ADD COLUMN vehicle_id INT(11) NOT NULL;
